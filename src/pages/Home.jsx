@@ -61,7 +61,7 @@ const Home = () => {
         </div>
       </section>
 
-      <TrustStrip />
+      {/* <TrustStrip /> */}
       <ServicesWeOffer/>
       <AboutSetClaims/>
       <LoadPercent/>

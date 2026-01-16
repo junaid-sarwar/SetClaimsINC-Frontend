@@ -75,7 +75,7 @@ const ContactCTA = () => {
                 <div>
                     <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Email Inquiry</p>
                     {/* CRITICAL FIX: break-all and font-size scaling for mobile */}
-                    <p className="text-sm sm:text-base md:text-lg font-bold flex items-start gap-2 uppercase tracking-tighter break-all">
+                    <p className="text-sm sm:text-base md:text-lg font-bold flex items-start gap-2 tracking-tighter break-all">
                         <Mail size={18} className="text-[#38B0E3] mt-1 shrink-0" /> info@setclaimssolutionsinc.com
                     </p>
                 </div>

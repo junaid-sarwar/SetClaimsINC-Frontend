@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 // Actual local logo paths
-import LogoColor from '../assets/logos/logo.jpeg'; 
-import LogoWhite from '../assets/logos/white-logo.png'; 
+import LogoColor from '../assets/logos/logo-nobg.png'; 
+import LogoWhite from '../assets/logos/white-logo2c.png'; 
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -160,7 +160,7 @@ const Navbar = () => {
                   <Link key={i} to={link.href} className="block text-sm font-semibold text-gray-500 pl-2">{link.name}</Link>
                 ))}
               </div>
-              <Link to="/specialties" className="text-sm font-bold text-gray-800">SPECIALTIES</Link>
+              {/* <Link to="/specialties" className="text-sm font-bold text-gray-800">SPECIALTIES</Link> */}
               <Link to="/about" className="text-sm font-bold text-gray-800">ABOUT</Link>
               <Link to="/contact" className="bg-[#1D2B80] text-white py-4 rounded-2xl text-center font-black tracking-widest text-xs uppercase">
                 Free Audit Now

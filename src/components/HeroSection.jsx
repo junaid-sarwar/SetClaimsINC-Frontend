@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Activity, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -31,9 +32,11 @@ const HeroSection = () => {
           
           <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
             {/* Primary Button using Flyer Gradient */}
+            <Link to='/contact'>
             <button className="w-full sm:w-auto bg-gradient-to-r from-[#14B8A6] to-[#38B0E3] hover:opacity-90 px-8 md:px-10 py-4 md:py-5 rounded-xl font-bold text-base md:text-lg shadow-xl shadow-[#14B8A6]/20 transition-all flex justify-center items-center gap-3 group">
               Request Free Audit <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
+            </Link>
             
             <div className="flex -space-x-3 items-center ml-2 sm:ml-0">
               {[1, 2, 3, 4].map(i => (
