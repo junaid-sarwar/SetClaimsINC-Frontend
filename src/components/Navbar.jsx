@@ -26,13 +26,15 @@ const Navbar = () => {
     setIsDropdownOpen(false);
   }, [location]);
 
+  // IDs mapped to the services array in Services.jsx
   const serviceLinks = [
-    { name: "Medical Coding Services", href: "/services" },
-    { name: "Eligibility Verification", href: "/services" },
-    { name: "Prior Authorization", href: "/services" },
-    { name: "Account Receivable", href: "/services" },
-    { name: "Denials Management", href: "/services" },
-    { name: "Payment Posting", href: "/services" },
+    { name: "Medical Coding Services", id: 1 },
+    { name: "Eligibility Verification", id: 2 },
+    { name: "Prior Authorization", id: 3 },
+    { name: "Account Receivable", id: 5 },
+    { name: "Denials Management", id: 4 },
+    { name: "Payment Posting", id: 6 },
+    { name: "EDI Enrollment Services", id: 9 },
   ];
 
   return (
@@ -43,10 +45,9 @@ const Navbar = () => {
           : "bg-transparent py-5"
       }`}
     >
-      {/* Primary Navigation - SEO Friendly */}
       <nav className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center" aria-label="Main Navigation">
         
-        {/* LOGO SECTION - Swaps images based on scroll */}
+        {/* LOGO SECTION */}
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative h-10 md:h-12 overflow-hidden rounded-lg">
              <img 
@@ -55,12 +56,9 @@ const Navbar = () => {
                className="h-full w-auto transition-opacity duration-500" 
              />
           </div>
-          {/* <span className={`text-xl font-black tracking-tighter transition-colors duration-500 ${isScrolled ? 'text-[#1D2B80]' : 'text-white'}`}>
-            SET<span className="text-[#38B0E3]">CLAIMS</span>
-          </span> */}
         </Link>
 
-        {/* DESKTOP MENU - Semantic Nav Links */}
+        {/* DESKTOP MENU */}
         <div className="hidden lg:flex items-center gap-8">
           <Link 
             to="/" 
@@ -76,7 +74,6 @@ const Navbar = () => {
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
             <button 
-              aria-expanded={isDropdownOpen}
               className={`flex items-center gap-1 text-sm font-bold tracking-wide transition-colors uppercase ${
                 isScrolled ? 'text-gray-700' : 'text-white/80'
               }`}
@@ -92,12 +89,12 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 10 }}
                   className="absolute top-full left-0 mt-4 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden py-4"
                 >
-                   {/* Secondary Nav for Services */}
                   <nav aria-label="Services Dropdown">
                     {serviceLinks.map((link, i) => (
                       <Link
                         key={i}
-                        to={link.href}
+                        to="/services"
+                        state={{ openId: link.id }} // Pass state to open specific modal
                         className="block px-6 py-3 text-[13px] font-semibold text-gray-600 hover:bg-[#14B8A6]/5 hover:text-[#14B8A6] transition-all"
                       >
                         {link.name}
@@ -109,9 +106,6 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* <Link to="/specialties" className={`text-sm font-bold tracking-wide transition-colors uppercase ${isScrolled ? 'text-gray-700 hover:text-[#14B8A6]' : 'text-white/80 hover:text-white'}`}>
-            Specialties
-          </Link> */}
           <Link to="/about" className={`text-sm font-bold tracking-wide transition-colors uppercase ${isScrolled ? 'text-gray-700 hover:text-[#14B8A6]' : 'text-white/80 hover:text-white'}`}>
             About
           </Link>
@@ -130,7 +124,6 @@ const Navbar = () => {
 
         {/* MOBILE TOGGLE */}
         <button 
-          aria-label="Toggle Menu"
           className="lg:hidden p-2 rounded-xl transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -142,7 +135,7 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* MOBILE MENU OVERLAY - SEO Friendly Nav Tag */}
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.nav
@@ -157,10 +150,16 @@ const Navbar = () => {
               <div className="space-y-3">
                 <p className="text-[10px] font-black text-[#14B8A6] tracking-widest uppercase">Our Services</p>
                 {serviceLinks.map((link, i) => (
-                  <Link key={i} to={link.href} className="block text-sm font-semibold text-gray-500 pl-2">{link.name}</Link>
+                  <Link 
+                    key={i} 
+                    to="/services" 
+                    state={{ openId: link.id }} // Pass state here too
+                    className="block text-sm font-semibold text-gray-500 pl-2 hover:text-[#14B8A6]"
+                  >
+                    {link.name}
+                  </Link>
                 ))}
               </div>
-              {/* <Link to="/specialties" className="text-sm font-bold text-gray-800">SPECIALTIES</Link> */}
               <Link to="/about" className="text-sm font-bold text-gray-800">ABOUT</Link>
               <Link to="/contact" className="bg-[#1D2B80] text-white py-4 rounded-2xl text-center font-black tracking-widest text-xs uppercase">
                 Free Audit Now

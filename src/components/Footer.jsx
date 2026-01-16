@@ -19,20 +19,20 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A0F1E] text-white pt-20 pb-10 relative overflow-hidden font-['Poppins']">
+    <footer className="bg-[#0A0F1E] text-white pt-20 pb-10 relative overflow-hidden font-['Poppins'] border-t border-white/5">
       
-      {/* Background Gradients */}
+      {/* Background Gradients - Flyer Theme */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#14B8A6]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#38B0E3]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
-        {/* TOP SECTION */}
+        {/* TOP SECTION: Navigation & Newsletter */}
         <div className="grid lg:grid-cols-12 gap-12 pb-16 border-b border-white/5">
           
           <div className="lg:col-span-4">
             <div className="mb-8">
-               <div className="inline-block p-2 bg-white rounded-2xl shadow-xl">
+               <div className="inline-block p-2 bg-white rounded-2xl shadow-xl border border-white/10">
                   <img 
                     src={Logo} 
                     alt="Set Claims Solutions Logo" 
@@ -42,45 +42,46 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm font-light">
-              Pioneering the future of healthcare through AI-powered Revenue Cycle Management. Transforming complexity into practice growth.
+              Pioneering the future of healthcare through AI-powered Revenue Cycle Management. Transforming complexity into practice growth across the USA.
             </p>
             
+            {/* Social Links Re-enabled for professional look */}
             {/* <div className="flex gap-4">
               {[Linkedin, Twitter, Globe].map((Icon, i) => (
-                <a key={i} href="#" className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#14B8A6] hover:bg-[#14B8A6]/10 transition-all duration-500">
-                  <Icon size={20} />
+                <a key={i} href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#14B8A6] hover:bg-[#14B8A6]/10 transition-all duration-300">
+                  <Icon size={18} />
                 </a>
               ))}
             </div> */}
           </div>
 
-          {/* Services Section - Updated Header and Links */}
+          {/* Services Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-[#14B8A6] mb-8 text-nowrap">Our Services</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-[#14B8A6] mb-8">Our Services</h4>
             <ul className="space-y-4 text-[13px] text-gray-400 font-medium tracking-wide">
-              {/* Passing state lets the Services page know which modal to open */}
               <li><Link to="/services" state={{ openId: 1 }} className="hover:text-[#14B8A6] transition-colors">Medical Coding</Link></li>
               <li><Link to="/services" state={{ openId: 2 }} className="hover:text-[#14B8A6] transition-colors">Eligibility</Link></li>
               <li><Link to="/services" state={{ openId: 3 }} className="hover:text-[#14B8A6] transition-colors">Prior Auth</Link></li>
               <li><Link to="/services" state={{ openId: 5 }} className="hover:text-[#14B8A6] transition-colors">A/R Recovery</Link></li>
+              <li><Link to="/services" state={{ openId: 9 }} className="hover:text-[#14B8A6] transition-colors">EDI Enrollment Services</Link></li>
             </ul>
           </div>
 
-          {/* Quick Links Section */}
+          {/* Quick Links Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-[#38B0E3] mb-8 text-nowrap">Quick Links</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-[#38B0E3] mb-8">Quick Links</h4>
             <ul className="space-y-4 text-[13px] text-gray-400 font-medium tracking-wide">
               <li><Link to="/" className="hover:text-[#38B0E3] transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-[#38B0E3] transition-colors">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-[#38B0E3] transition-colors">Contact Us</Link></li>
-              <li><Link to="/services" className="hover:text-[#38B0E3] transition-colors">Services</Link></li>
+              <li><Link to="/services" className="hover:text-[#38B0E3] transition-colors">All Services</Link></li>
             </ul>
           </div>
 
-          {/* Investor Newsletter */}
+          {/* Newsletter Section */}
           <div className="lg:col-span-4">
             <h4 className="text-[10px] font-black uppercase tracking-[0.25em] text-white mb-8">Stay Updated</h4>
-            <p className="text-gray-400 text-sm mb-6 font-light">Get the latest RCM insights and reports.</p>
+            <p className="text-gray-400 text-sm mb-6 font-light">Join our monthly RCM performance insights newsletter.</p>
             <div className="relative group">
               <input 
                 type="email" 
@@ -94,35 +95,51 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* MIDDLE SECTION: Contact Info */}
-        <div className="grid md:grid-cols-3 gap-8 py-12 border-b border-white/5">
+        {/* MIDDLE SECTION: Contact Info Strip */}
+        <div className="grid md:grid-cols-3 gap-y-10 md:gap-8 py-12 border-b border-white/5">
+            
+            {/* PHONE CARD - Two numbers fixed vertically */}
             <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#14B8A6]">
-                    <Phone size={18} />
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-[#14B8A6] shrink-0">
+                    <Phone size={20} />
                 </div>
-                <p className="text-sm font-bold tracking-tight">413-328-3913</p>
+                <div className="flex flex-col gap-0.5">
+                    <p className="text-xs text-gray-500 uppercase font-black tracking-widest mb-1">Direct Support</p>
+                    <p className="text-base font-bold tracking-tight">413-328-3913</p>
+                    <p className="text-base font-bold tracking-tight opacity-90">281-317-1154</p>
+                </div>
             </div>
+
+            {/* EMAIL CARD */}
             <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#38B0E3]">
-                    <Mail size={18} />
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-[#38B0E3] shrink-0">
+                    <Mail size={20} />
                 </div>
-                <p className="text-sm font-bold tracking-tight truncate">info@setclaimssolutionsinc.com</p>
+                <div>
+                    <p className="text-xs text-gray-500 uppercase font-black tracking-widest mb-1">Email Inquiry</p>
+                    <p className="text-sm md:text-base font-bold tracking-tight truncate break-all">info@setclaimssolutionsinc.com</p>
+                </div>
             </div>
+
+            {/* LOCATION CARD */}
             <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500">
-                    <MapPin size={18} />
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-gray-500 shrink-0">
+                    <MapPin size={20} />
                 </div>
-                <p className="text-sm font-bold tracking-tight">Livermore, CA 94550</p>
+                <div>
+                    <p className="text-xs text-gray-500 uppercase font-black tracking-widest mb-1">Headquarters</p>
+                    <p className="text-base font-bold tracking-tight">Livermore, CA 94550</p>
+                </div>
             </div>
         </div>
 
-        {/* BOTTOM SECTION */}
+        {/* BOTTOM SECTION: Legal & Compliance */}
         <div className="pt-10 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[10px] font-bold text-gray-600 tracking-[0.3em] uppercase text-center md:text-left">
-            © {currentYear} SET CLAIMS SOLUTIONS INC.
+            © {currentYear} SET CLAIMS SOLUTIONS INC. ALL RIGHTS RESERVED.
           </p>
 
-          <div className="flex items-center gap-4 px-5 py-2.5 rounded-full bg-white/[0.02] border border-white/5">
+          <div className="flex items-center gap-4 px-6 py-2.5 rounded-full bg-white/[0.02] border border-white/5 shadow-inner">
              <div className="flex items-center gap-2">
                 <ShieldCheck size={14} className="text-[#14B8A6]" />
                 <span className="text-[9px] font-black tracking-[0.2em] uppercase opacity-70">HIPAA Compliant</span>

@@ -15,35 +15,25 @@ import {
   Sparkles,
   TrendingUp,
   BarChart3,
+  Zap // Added for EDI
 } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
   const location = useLocation();
 
-useEffect(() => {
-    if (location.state && location.state.openId) {
-      const found = services.find(s => s.id === location.state.openId);
-      if (found) setSelectedService(found);
-    }
-  }, [location.state]);
-
   const services = [
     {
       id: 1,
       title: "Medical Coding Services",
-      shortDesc:
-        "Accurate conversion of patient information into standardized codes for maximum reimbursement.",
+      shortDesc: "Accurate conversion of patient information into standardized codes for maximum reimbursement.",
       icon: <Stethoscope size={32} />,
-      color: "#14B8A6",
       details: {
-        intro:
-          "Medical Coding refers to the identification of diagnoses, medical tests, procedures, and treatments in clinical papers. Afterward, the patient information from these records is converted into standardized codes used to charge both government and private payers.",
-        offers:
-          "CompleteCare Billing provides medical coding services to physicians, medical offices and facilities of all sizes. Our team includes AAPC certified experts who frequently increase client income by at least 10% through streamlined, compliant coding.",
+        intro: "Medical Coding refers to the identification of diagnoses, medical tests, procedures, and treatments in clinical papers. Afterward, the patient information from these records is converted into standardized codes used to charge both government and private payers.",
+        offers: "CompleteCare Billing provides medical coding services to physicians, medical offices and facilities of all sizes. Our team includes AAPC certified experts who frequently increase client income by at least 10% through streamlined, compliant coding.",
         whyUs: [
           "HIPAA compliant (Complete Data Security)",
           "10-30% increment in monthly collection",
@@ -63,15 +53,11 @@ useEffect(() => {
     {
       id: 2,
       title: "Eligibility Verification",
-      shortDesc:
-        "Real-time verification of patient insurance to prevent denials before the service is provided.",
+      shortDesc: "Real-time verification of patient insurance to prevent denials before the service is provided.",
       icon: <UserCheck size={32} />,
-      color: "#38B0E3",
       details: {
-        intro:
-          "Verification of eligibility and benefits at the time of services plays the most important role in your revenue. We ensure coverage is active before the patient sees the provider.",
-        offers:
-          "We handle real-time verification, coverage analysis, and prior authorization management for all major commercial and government payers.",
+        intro: "Verification of eligibility and benefits at the time of services plays the most important role in your revenue. We ensure coverage is active before the patient sees the provider.",
+        offers: "We handle real-time verification, coverage analysis, and prior authorization management for all major commercial and government payers.",
         whyUs: [
           "Reduce front-end denials",
           "Improve patient experience",
@@ -88,15 +74,11 @@ useEffect(() => {
     {
       id: 3,
       title: "Prior Authorization",
-      shortDesc:
-        "Managing complex authorization workflows to ensure medical necessity is approved.",
+      shortDesc: "Managing complex authorization workflows to ensure medical necessity is approved.",
       icon: <ClipboardCheck size={32} />,
-      color: "#14B8A6",
       details: {
-        intro:
-          "Prior authorization is a critical step in getting paid. We navigate the complex requirements of insurance companies to get your procedures approved.",
-        offers:
-          "Our dedicated team manages the entire auth lifecycle, from initial submission to follow-ups and final approval.",
+        intro: "Prior authorization is a critical step in getting paid. We navigate the complex requirements of insurance companies to get your procedures approved.",
+        offers: "Our dedicated team manages the entire auth lifecycle, from initial submission to follow-ups and final approval.",
         whyUs: [
           "Decrease surgery cancellations",
           "Reduce administrative burden",
@@ -108,15 +90,11 @@ useEffect(() => {
     {
       id: 4,
       title: "Rejections & Denials",
-      shortDesc:
-        "Aggressive management of denied claims to recover every dollar owed to your practice.",
+      shortDesc: "Aggressive management of denied claims to recover every dollar owed to your practice.",
       icon: <ShieldAlert size={32} />,
-      color: "#38B0E3",
       details: {
-        intro:
-          "Errors in medical coding or documentation lead to denials. We analyze rejection patterns to eliminate the root cause and recover lost revenue.",
-        offers:
-          "We provide an aggressive denial management strategy that focuses on rapid re-submission and clinical appeals.",
+        intro: "Errors in medical coding or documentation lead to denials. We analyze rejection patterns to eliminate the root cause and recover lost revenue.",
+        offers: "We provide an aggressive denial management strategy that focuses on rapid re-submission and clinical appeals.",
         whyUs: [
           "Improved first-pass rate",
           "Systematic follow-up",
@@ -132,15 +110,11 @@ useEffect(() => {
     {
       id: 5,
       title: "A/R & Aging Recovery",
-      shortDesc:
-        "Systematic cleanup of old accounts receivable to secure your financial health.",
+      shortDesc: "Systematic cleanup of old accounts receivable to secure your financial health.",
       icon: <TrendingUp size={32} />,
-      color: "#14B8A6",
       details: {
-        intro:
-          "Our team specializes in recovering old AR. Failure to reimburse your work means no revenue for us—we are incentivized to get you paid.",
-        offers:
-          "We audit and follow up on all claims older than 30, 60, and 90 days to ensure zero revenue leakage.",
+        intro: "Our team specializes in recovering old AR. Failure to reimburse your work means no revenue for us—we are incentivized to get you paid.",
+        offers: "We audit and follow up on all claims older than 30, 60, and 90 days to ensure zero revenue leakage.",
         whyUs: [
           "Reduce Days in AR",
           "Consistent cash flow",
@@ -156,15 +130,11 @@ useEffect(() => {
     {
       id: 6,
       title: "Payment Posting",
-      shortDesc:
-        "Accurate daily posting of ERAs and manual payments to keep records precise.",
+      shortDesc: "Accurate daily posting of ERAs and manual payments to keep records precise.",
       icon: <CreditCard size={32} />,
-      color: "#38B0E3",
       details: {
-        intro:
-          "Payment posting provides insight into a practice's daily revenue stream. We meticulously track adjustments, write-offs, and balances.",
-        offers:
-          "Electronic and manual posting services that ensure your financial dashboards are always up to date.",
+        intro: "Payment posting provides insight into a practice's daily revenue stream. We meticulously track adjustments, write-offs, and balances.",
+        offers: "Electronic and manual posting services that ensure your financial dashboards are always up to date.",
         whyUs: [
           "99% posting accuracy",
           "Daily reconciliation",
@@ -180,15 +150,11 @@ useEffect(() => {
     {
       id: 7,
       title: "Reporting & Financials",
-      shortDesc:
-        "Real-time dashboards and custom reports to monitor your practice performance.",
+      shortDesc: "Real-time dashboards and custom reports to monitor your practice performance.",
       icon: <BarChart3 size={32} />,
-      color: "#14B8A6",
       details: {
-        intro:
-          "Our financial reporting gives you the insight needed to resolve inefficiencies and ensure claim integrity.",
-        offers:
-          "Customizable reporting packages tailored to your practice's specific KPIs and growth goals.",
+        intro: "Our financial reporting gives you the insight needed to resolve inefficiencies and ensure claim integrity.",
+        offers: "Customizable reporting packages tailored to your practice's specific KPIs and growth goals.",
         whyUs: [
           "360° business visibility",
           "Data-driven decisions",
@@ -204,15 +170,11 @@ useEffect(() => {
     {
       id: 8,
       title: "Patient Help Desk",
-      shortDesc:
-        "Exceptional customer support for billing queries, freeing your staff to focus on care.",
+      shortDesc: "Exceptional customer support for billing queries, freeing your staff to focus on care.",
       icon: <Headset size={32} />,
-      color: "#38B0E3",
       details: {
-        intro:
-          "We handle patient billing queries professionally, ensuring a positive experience for your patients.",
-        offers:
-          "Dedicated support lines that answer patient questions about statements and insurance coverage.",
+        intro: "We handle patient billing queries professionally, ensuring a positive experience for your patients.",
+        offers: "Dedicated support lines that answer patient questions about statements and insurance coverage.",
         whyUs: [
           "Higher patient satisfaction",
           "Reduced office workload",
@@ -221,7 +183,40 @@ useEffect(() => {
         included: ["Billing Inquiries", "Payment Plans", "Portal Support"],
       },
     },
+    {
+      id: 9,
+      title: "EDI Enrollment Services",
+      shortDesc: "Seamless EDI setup for faster electronic claim processing and remittance advice.",
+      icon: <Zap size={32} />,
+      details: {
+        intro: "EDI Enrollment allows healthcare providers to electronically submit claims and receive ERAs. Our team handles the complete setup so you can ensure uninterrupted billing operations.",
+        offers: "We authorize your practice to exchange data with insurance companies through approved clearinghouses and payer portals, preventing delays and rejections.",
+        whyUs: [
+          "Experienced Credentialing Specialists",
+          "Faster Enrollment Turnaround",
+          "Error-Free Submissions",
+          "Reduced Claim Rejections",
+          "Ongoing Support After Enrollment",
+          "HIPAA-Compliant Processes"
+        ],
+        included: [
+          "Provider & Group Enrollment",
+          "ERA/EFT Assistance",
+          "Clearinghouse Configuration",
+          "Medicare & Commercial Payers",
+          "Re-Enrollment & Updates",
+          "NPI & Tax ID Verification"
+        ]
+      }
+    },
   ];
+
+  useEffect(() => {
+    if (location.state && location.state.openId) {
+      const found = services.find((s) => s.id === location.state.openId);
+      if (found) setSelectedService(found);
+    }
+  }, [location.state]);
 
   return (
     <div className="min-h-screen bg-[#0A0F1E] text-white font-['Poppins'] selection:bg-[#14B8A6]">
@@ -257,7 +252,7 @@ useEffect(() => {
 
       {/* SERVICES GRID */}
       <section className="pb-32 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, idx) => (
             <motion.div
               key={service.id}
@@ -294,7 +289,6 @@ useEffect(() => {
       <AnimatePresence>
         {selectedService && (
           <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8">
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -303,7 +297,6 @@ useEffect(() => {
               className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-md"
             />
 
-            {/* Modal Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -328,10 +321,9 @@ useEffect(() => {
                 </button>
               </div>
 
-              {/* Modal Body (Scrollable) */}
+              {/* Modal Body */}
               <div className="p-6 md:p-12 overflow-y-auto custom-scrollbar">
                 <div className="grid lg:grid-cols-2 gap-12">
-                  {/* Left Col: Info */}
                   <div className="space-y-8">
                     <div>
                       <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#14B8A6] mb-4">
@@ -351,12 +343,11 @@ useEffect(() => {
                     </div>
                   </div>
 
-                  {/* Right Col: Lists */}
                   <div className="space-y-10">
                     <div className="bg-[#14B8A6]/5 p-8 rounded-[32px] border border-[#14B8A6]/10">
                       <h4 className="text-sm font-bold text-[#1D2B80] mb-6 flex items-center gap-2">
                         Why Choose Us{" "}
-                        <Sparkles size={16} className="text-[#14B8A6]" />
+                        {/* <Sparkles size={16} className="text-[#14B8A6]" /> */}
                       </h4>
                       <div className="grid gap-3">
                         {selectedService.details.whyUs.map((point, i) => (
@@ -392,14 +383,16 @@ useEffect(() => {
                 </div>
               </div>
 
-              {/* Modal Footer CTA */}
+              {/* Modal Footer */}
               <div className="p-8 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6">
                 <p className="text-sm font-medium text-gray-500">
                   Ready to optimize your practice revenue?
                 </p>
+                <Link to='/contact'>
                 <button className="w-full sm:w-auto px-10 py-4 bg-[#1D2B80] text-white rounded-2xl font-bold hover:bg-[#14B8A6] transition-all shadow-lg shadow-navy/20 active:scale-95">
                   Schedule Free Consultation
                 </button>
+                </Link>
               </div>
             </motion.div>
           </div>

@@ -153,14 +153,62 @@ const Contact = () => {
                   <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#14B8A6]/20 rounded-full blur-3xl" />
                </motion.div>
 
-               <div className="p-8 rounded-[40px] bg-white border border-gray-100 shadow-xl">
+               {/* <div className="p-8 rounded-[40px] bg-white border border-gray-100 shadow-xl">
                     <h4 className="text-[#1D2B80] font-black uppercase tracking-widest text-xs mb-6">Quick Links</h4>
                     <div className="flex flex-wrap gap-3">
                         {["Credentialing", "AI Coding", "A/R Recovery", "Dashboards"].map((tag) => (
                             <span key={tag} className="px-4 py-2 bg-gray-50 rounded-full text-[11px] font-bold text-gray-500 border border-gray-100">{tag}</span>
                         ))}
                     </div>
-               </div>
+               </div> */}
+               <motion.div 
+  initial={{ opacity: 0, x: -30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.2 }}
+  className="p-8 md:p-10 rounded-[40px] bg-white border border-gray-100 shadow-xl relative overflow-hidden"
+>
+    <div className="relative z-10">
+        <h4 className="text-[#14B8A6] font-black uppercase tracking-[0.2em] text-[10px] mb-6">Our Process</h4>
+        <h3 className="text-xl font-bold text-[#1D2B80] mb-8 uppercase tracking-tight leading-tight">
+            How we start your <br /> <span className="text-[#38B0E3]">Transformation.</span>
+        </h3>
+        
+        <div className="space-y-8">
+            {/* Step 1 */}
+            <div className="flex gap-4 relative">
+                <div className="absolute left-[15px] top-10 bottom-[-20px] w-[2px] bg-gray-100" /> {/* Connector Line */}
+                <div className="w-8 h-8 rounded-full bg-[#14B8A6] flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-lg shadow-[#14B8A6]/20">1</div>
+                <div>
+                    <p className="font-bold text-[#1D2B80] text-sm uppercase">Revenue Audit</p>
+                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">We analyze your current billing cycle to find hidden revenue leakage.</p>
+                </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex gap-4 relative">
+                <div className="absolute left-[15px] top-10 bottom-[-20px] w-[2px] bg-gray-100" /> {/* Connector Line */}
+                <div className="w-8 h-8 rounded-full bg-[#38B0E3] flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-lg shadow-[#38B0E3]/20">2</div>
+                <div>
+                    <p className="font-bold text-[#1D2B80] text-sm uppercase">Seamless Integration</p>
+                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">Our team syncs with your software or paperwork with zero downtime.</p>
+                </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-[#1D2B80] flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-lg shadow-navy/20">3</div>
+                <div>
+                    <p className="font-bold text-[#1D2B80] text-sm uppercase">Daily Optimization</p>
+                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">Watch your clean-claim rate hit 99% as your revenue begins to grow.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {/* Subtle Background Shape */}
+    <div className="absolute top-[-20%] right-[-20%] w-32 h-32 bg-[#38B0E3]/5 rounded-full blur-2xl" />
+</motion.div>
             </div>
 
             {/* RIGHT: High-End Form */}
