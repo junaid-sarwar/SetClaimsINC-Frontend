@@ -5,7 +5,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 
 // Actual local logo paths
 import LogoColor from '../assets/logos/logo-nobg.png'; 
-import LogoWhite from '../assets/logos/whitey.png'; 
+import LogoWhite from '../assets/logos/whitey.PNG'; 
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

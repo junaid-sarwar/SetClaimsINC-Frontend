@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const Contact = () => {
+  const apiURL = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,15 +34,15 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("http://localhost:5001/api/contact", {
+      const response = await fetch(`${apiURL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          company: formData.practice, // Maps 'practice' to 'company' in backend
-          serviceInterest: formData.specialty, // Maps 'specialty' to 'serviceInterest' in backend
+          company: formData.practice,
+          serviceInterest: formData.specialty,
           message: formData.message
         }),
       });
@@ -90,7 +91,6 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC] font-['Poppins'] selection:bg-[#14B8A6] selection:text-white">
       <Navbar />
-
       {/* HERO SECTION */}
       <section className="relative pt-40 pb-24 bg-[#0A0F1E] overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#14B8A6]/10 rounded-full blur-[120px]" />

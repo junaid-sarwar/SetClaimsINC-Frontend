@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Send, Phone, Mail, CheckCircle, Sparkles, AlertCircle } from 'lucide-react';
 
 const ContactCTA = () => {
+  const apiURL = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,14 +26,14 @@ const ContactCTA = () => {
     setStatus(null);
 
     try {
-      const response = await fetch("http://localhost:5001/api/contact", {
+      const response = await fetch(`${apiURL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: `${formData.firstName} ${formData.lastName}`, // Merge for backend
+          name: `${formData.firstName} ${formData.lastName}`, 
           email: formData.email,
           phone: formData.phone,
-          company: "Home Page Demo Request", // Default mapping for backend
+          company: "Home Page Demo Request", 
           serviceInterest: formData.serviceInterest,
           message: formData.message
         }),
