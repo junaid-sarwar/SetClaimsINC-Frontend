@@ -11,6 +11,7 @@ import {
   Headset,
   ChevronRight
 } from 'lucide-react';
+import {Link} from 'react-router-dom'
 
 const ServicesWeOffer = () => {
   const services = [
@@ -85,9 +86,12 @@ const ServicesWeOffer = () => {
                 <h3 className="text-lg font-bold text-[#1D2B80] mb-4 leading-snug group-hover:text-[#38B0E3] transition-colors">
                   {service.title}
                 </h3>
+                
+                <Link to='/services'>
                 <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-gray-400 group-hover:text-[#1D2B80] transition-colors uppercase">
                   Explore <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
+                </Link>
               </div>
             </motion.div>
           ))}
