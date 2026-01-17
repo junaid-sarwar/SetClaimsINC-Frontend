@@ -20,38 +20,38 @@ const ContactCTA = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus(null);
+  // Sirf handleSubmit update karein
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setStatus(null);
 
-    try {
-      const response = await fetch(`${apiURL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: `${formData.firstName} ${formData.lastName}`, 
-          email: formData.email,
-          phone: formData.phone,
-          company: "Home Page Demo Request", 
-          serviceInterest: formData.serviceInterest,
-          message: formData.message
-        }),
-      });
+  try {
+    const response = await fetch(`${apiURL}/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: `${formData.firstName} ${formData.lastName}`, // Merge names
+        email: formData.email,
+        phone: formData.phone,
+        serviceInterest: formData.serviceInterest,
+        message: formData.message,
+        company: "Home Page Demo Request"
+      }),
+    });
 
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", serviceInterest: "Medical Billing Services", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      console.error(err);
+    if (response.ok) {
+      setStatus("success");
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", serviceInterest: "Medical Billing Services", message: "" });
+    } else {
       setStatus("error");
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  } catch (err) {
+    setStatus("error");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const inputClass = "w-full px-4 py-3.5 md:px-5 md:py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:border-[#14B8A6] focus:ring-4 focus:ring-[#14B8A6]/5 transition-all text-[#1D2B80] placeholder:text-gray-400 font-medium text-sm md:text-base";
   const labelClass = "block text-[10px] md:text-[11px] font-black uppercase tracking-widest text-gray-500 mb-2 ml-1";

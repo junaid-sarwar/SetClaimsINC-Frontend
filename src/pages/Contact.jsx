@@ -28,38 +28,31 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+  // Sirf handleSubmit badle baqi aapka 330 LOC design bilkul same rahega
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus(null);
 
-    try {
-      const response = await fetch(`${apiURL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.practice,
-          serviceInterest: formData.specialty,
-          message: formData.message
-        }),
-      });
+  try {
+    const response = await fetch(`${apiURL}/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData), // FormData mein name, email, phone, practice, specialty pehle se hain
+    });
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", phone: "", practice: "", specialty: "", message: "" });
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
+    if (response.ok) {
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", phone: "", practice: "", specialty: "", message: "" });
+    } else {
       setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  } catch (error) {
+    setSubmitStatus("error");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const contactCards = [
     {
