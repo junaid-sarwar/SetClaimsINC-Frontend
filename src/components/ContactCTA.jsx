@@ -27,7 +27,7 @@ const handleSubmit = async (e) => {
   setStatus(null);
 
   try {
-    const response = await fetch(`https://setclaimsinc-backend.onrender.com/api/contact`, {
+    const response = await fetch(`https://set-claims-inc-backend.vercel.app/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
